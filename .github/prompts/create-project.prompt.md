@@ -1,4 +1,5 @@
 ---
+name: create-project-local
 agent: build-engineer
 description: Створи базову структуру Python-проєкту hello за skill project-scaffold.
 ---

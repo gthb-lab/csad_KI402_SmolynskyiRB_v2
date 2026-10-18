@@ -1,4 +1,5 @@
 ---
+name: check-local
 agent: build-engineer
 description: Перевір повноту структури, CI, безпеку та ідемпотентність проєкту без виправлення файлів.
 ---

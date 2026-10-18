@@ -1,4 +1,5 @@
 ---
+name: git-init-local
 agent: build-engineer
 description: Ініціалізуй безпечно Git-репозиторій і базові правила виключення та перенесення рядків без коміту.
 ---

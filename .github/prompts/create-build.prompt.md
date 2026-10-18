@@ -1,4 +1,5 @@
 ---
+name: create-build-local
 agent: build-engineer
 description: Додай кросплатформні скрипти запуску, тести та PyInstaller CI через skill build-and-test.
 ---

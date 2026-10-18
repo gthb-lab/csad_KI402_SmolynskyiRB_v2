@@ -1,6 +1,7 @@
 ---
 name: project-scaffold
 description: Застосовуй для створення базової структури кросплатформного Python-проєкту Hello World та його початкової документації.
+user-invocable: true
 ---
 
 # Призначення

@@ -1,4 +1,5 @@
 ---
+name: create-actions-local
 agent: build-engineer
 description: Налаштуй кросплатформний GitHub Actions workflow для наявних скриптів ci.sh і ci.bat.
 ---

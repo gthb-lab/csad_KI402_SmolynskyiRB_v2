@@ -1,4 +1,5 @@
 ---
+name: init-local
 agent: build-engineer
 description: Послідовно підготуй і перевір проєкт Hello World через наявні prompt-команди без коміту.
 ---

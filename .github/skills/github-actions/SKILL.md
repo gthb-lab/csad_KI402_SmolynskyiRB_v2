@@ -1,6 +1,7 @@
 ---
 name: github-actions
 description: Застосовуй для налаштування GitHub Actions CI на Linux, Windows і macOS для наявних скриптів ci.sh та ci.bat.
+user-invocable: true
 ---
 
 # Призначення

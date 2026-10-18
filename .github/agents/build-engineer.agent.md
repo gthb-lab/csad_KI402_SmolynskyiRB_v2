@@ -1,7 +1,7 @@
 ---
 name: build-engineer
 description: Автоматизує створення, складання, тестування та CI кросплатформного Python-проєкту Hello World.
-tools: [codebase, editFiles, runCommands, search]
+tools: [search/codebase, search/fileSearch, edit/editFiles, execute/runInTerminal]
 ---
 
 # Build Engineer
@@ -24,6 +24,7 @@ tools: [codebase, editFiles, runCommands, search]
 
 ## Доступні commands
 
+- У Copilot harness використовуй відповідні user-invocable skills з назвами команд нижче; файли `.prompt.md` підтримуються лише в Local harness.
 - `git-init` — ініціалізує Git у проєкті, якщо репозиторій ще не ініціалізовано.
 - `create-project` — створює структуру проєкту Hello World, файли застосунку, тестів і документації.
 - `create-build` — створює або оновлює скрипти локальної збірки, запуску та тестування.

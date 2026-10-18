@@ -1,6 +1,7 @@
 ---
 name: build-and-test
 description: Застосовуй для додавання тестів pytest, скриптів запуску та кросплатформного CI-збирання PyInstaller до наявного Python-проєкту.
+user-invocable: true
 ---
 
 # Призначення
