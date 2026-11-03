@@ -71,4 +71,14 @@ build\hello.exe
 
 ## 8. Результати CI
 
-Розділ про результати CI заповнюється після успішних запусків GitHub Actions.
+Workflow `CI` (`.github/workflows/ci.yml`) успішно пройшов збірку для pull request lab1/finish (`#1`) у гілці `feature/hello-python`. Тригерами workflow є `push` і `pull_request` до гілок `develop` та `master`. Загальна тривалість запуску: 44 секунди.
+
+Посилання на [запуск GitHub Actions](https://github.com/gthb-lab/csad_KI402_SmolynskyiRB_v2/actions/runs/41637297291).
+
+| ОС | Статус | Тривалість | Артефакт |
+|---|---|---:|---|
+| ubuntu-latest | Успішно | 30 с | hello-ubuntu-latest |
+| windows-latest | Успішно | 40 с | hello-windows-latest |
+| macos-latest | Успішно | 25 с | hello-macos-latest |
+
+На кожній ОС `ci.sh` або `ci.bat` виконали збірку та тестування pytest: 2 тести пройдено. Створено виконуваний файл `build/hello` або `build\hello.exe` на Windows.
