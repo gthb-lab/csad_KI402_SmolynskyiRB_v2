@@ -44,6 +44,7 @@ agent: build-engineer
 6. **Збірка й тести:** виконати `bash ci.sh` на Linux/macOS або `ci.bat` на Windows; очікується код виходу `0`, повідомлення `test_basic_addition passed` та наявність `build/hello` або `build/hello.exe`.
 7. **GitHub Actions:** у `.venv` завантажити YAML через `python -c "import yaml; yaml.safe_load(open('.github/workflows/ci.yml', encoding='utf-8'))"`; перевірити матрицю `ubuntu-latest`, `windows-latest`, `macos-latest`, тригери `push` і `pull_request` для `develop` і `master` та відсутність `pytest`, `pyinstaller`, `pip install`.
 8. **Git-гігієна:** виконати `git ls-files`; переконатися, що відсутні відстежувані шляхи `build/`, `.venv/`, `dist/`, `__pycache__`, `.pytest_cache`; пошукати у tracked-файлах шаблони `ghp_`, `password=`, `token=`.
+8a. **Перевірка untracked-ігнорів:** виконати `git status --short` і переконатися, що він не містить untracked-файлів або каталогів `__pycache__`, `*.pyc`, `.venv`, `build`, `.pytest_cache`; це підтверджує, що відповідні каталоги ігноруються.
 9. **Журнал AI:** перевірити, що `docs/ai-log.md` існує й не порожній.
 
 Формат звіту:

@@ -16,8 +16,8 @@ agent: build-engineer
 
 1. Перевірити стан репозиторію командою `git rev-parse --is-inside-work-tree`.
 2. Якщо поточна папка не є репозиторієм, виконати `git init`; якщо Git уже активовано, `git init` не запускати повторно.
-3. Створити `.gitignore`, якщо він відсутній, або доповнити його рядками `.venv/`, `build/`, `dist/`, `__pycache__/`, `.pytest_cache/`, `*.spec`, `*.pyc`.
-4. Не дублювати рядки `.gitignore`, які вже присутні.
+3. Обов'язково створити `.gitignore`, якщо він відсутній; не пропускати цей крок, якщо створені інші файли проєкту.
+4. Доповнити `.gitignore` усіма рядками `.venv/`, `build/`, `dist/`, `__pycache__/`, `.pytest_cache/`, `*.spec`, `*.pyc`; не дублювати рядки, які вже присутні.
 5. Показати користувачу результат `git status --short`.
 6. Показати назву поточної гілки через `git branch --show-current`.
 7. Не виконувати `commit`, `push`, `reset` і `clean`.
@@ -31,6 +31,7 @@ agent: build-engineer
 - `git status --short`
 - Перевірити, що кожен обов'язковий рядок у `.gitignore` присутній рівно один раз:
   `.venv/`, `build/`, `dist/`, `__pycache__/`, `.pytest_cache/`, `*.spec`, `*.pyc`.
+- Перевірити, що Git не показує untracked `__pycache__/`, `*.pyc`, `.venv/`, `build/` або `.pytest_cache/`; повторно доповнити `.gitignore` перед перевіркою, якщо рядок відсутній.
 
 ## Повідомлення про помилку
 
