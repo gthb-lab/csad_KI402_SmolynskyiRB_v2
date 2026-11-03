@@ -6,15 +6,15 @@
 2. Відкрийте Copilot Chat.
 3. Перейдіть у Agent mode.
 4. Виберіть агента `build-engineer`.
-5. Виконайте `/init`.
+5. Виконайте `/init-local`.
 
 ## Окремі команди
 
-- `/git-init` — ініціалізує Git і доповнює `.gitignore`.
-- `/create-project` — створює початкову структуру проєкту Hello World.
-- `/create-build` — створює залежності, тестування та скрипти збірки.
-- `/create-actions` — створює `.github/workflows/ci.yml`.
-- `/check` — перевіряє проєкт без виправлення відстежуваних файлів.
+- `/git-init-local` — ініціалізує Git і доповнює `.gitignore`.
+- `/create-project-local` — створює початкову структуру проєкту Hello World.
+- `/create-build-local` — створює залежності, тестування та скрипти збірки.
+- `/create-actions-local` — створює `.github/workflows/ci.yml`.
+- `/check-local` — перевіряє проєкт без виправлення відстежуваних файлів.
 
 ## Локальна збірка й перевірка
 
@@ -77,7 +77,7 @@ Hello, World!
 1. Створіть і переключіться на feature-гілку, наприклад `feature/hello-agent`.
 2. Відкрийте репозиторій у VS Code.
 3. Запустіть build-engineer у Copilot Chat у режимі Agent.
-4. Виконайте `/init`; якщо артефакти вже створені, повторний запуск має пропустити відповідні файли.
+4. Виконайте `/init-local`; якщо артефакти вже створені, повторний запуск має пропустити відповідні файли.
 5. На Linux/macOS виконайте `bash ci.sh`; на Windows — `ci.bat`.
 6. Перевірте, що збірка успішна й створено `build/hello` або `build/hello.exe`.
 7. Перегляньте зміни командами `git status` і `git diff`.

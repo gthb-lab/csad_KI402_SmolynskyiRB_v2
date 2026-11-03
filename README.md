@@ -33,17 +33,17 @@ AI-агент build-engineer для GitHub Copilot генерує, збирає,
 1. Відкрийте репозиторій у VS Code.
 2. Відкрийте Copilot Chat і перейдіть у режим Agent.
 3. Виберіть агента `build-engineer`.
-4. Виконайте команду `/init`.
+4. Виконайте команду `/init-local`.
 
-Повторний запуск `/init` є безпечним.
+Повторний запуск `/init-local` є безпечним.
 
 Окремі команди:
 
-- `/git-init`
-- `/create-project`
-- `/create-build`
-- `/create-actions`
-- `/check`
+- `/git-init-local`
+- `/create-project-local`
+- `/create-build-local`
+- `/create-actions-local`
+- `/check-local`
 
 ## 6. Як зібрати і запустити проєкт
 

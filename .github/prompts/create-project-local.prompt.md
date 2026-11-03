@@ -9,7 +9,7 @@ agent: build-engineer
 
 ## Передумови
 
-- Команда git-init виконана.
+- Команда git-init-local виконана.
 - Python 3 доступний: перевіряється через `python3 --version` або `py -3 --version`.
 
 ## Дії

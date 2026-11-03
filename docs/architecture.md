@@ -16,12 +16,12 @@
 
 | Назва | Що викликає | Що створює/перевіряє |
 |---|---|---|
-| `git-init` | Ініціалізацію Git-репозиторію та базову Git-підготовку | Перевіряє стан репозиторію, створює або не дублює Git-налаштування |
-| `create-project` | Skill `project-scaffold` | Створює структуру Hello World на Python і файли проєкту |
-| `create-build` | Skill `build-and-test` | Створює `ci.sh`, `ci.bat`, вимоги та налаштування збірки PyInstaller; перевіряє збірку й pytest |
-| `create-actions` | Skill `github-actions` | Створює workflow GitHub Actions для ubuntu, windows і macos |
-| `check` | Усі команди та skills після створення артефактів | Перевіряє структуру, збірку, тестування й коректність workflow |
-| `init` | Оркестратор послідовності ініціалізації | Послідовно викликає `git-init`, `create-project`, `create-build`, `create-actions` і `check` |
+| `git-init-local` | Ініціалізацію Git-репозиторію та базову Git-підготовку | Перевіряє стан репозиторію, створює або не дублює Git-налаштування |
+| `create-project-local` | Skill `project-scaffold` | Створює структуру Hello World на Python і файли проєкту |
+| `create-build-local` | Skill `build-and-test` | Створює `ci.sh`, `ci.bat`, вимоги та налаштування збірки PyInstaller; перевіряє збірку й pytest |
+| `create-actions-local` | Skill `github-actions` | Створює workflow GitHub Actions для ubuntu, windows і macos |
+| `check-local` | Усі команди та skills після створення артефактів | Перевіряє структуру, збірку, тестування й коректність workflow |
+| `init-local` | Оркестратор послідовності ініціалізації | Послідовно викликає `git-init-local`, `create-project-local`, `create-build-local`, `create-actions-local` і `check-local` |
 
 ## 4. Схема взаємодії
 
@@ -31,11 +31,11 @@ flowchart LR
     C --> S[Skills]
     S --> F[Файли проєкту]
 
-    I[init] --> GI[git-init]
-    GI --> CP[create-project]
-    CP --> CB[create-build]
-    CB --> CA[create-actions]
-    CA --> CH[check]
+    I[init-local] --> GI[git-init-local]
+    GI --> CP[create-project-local]
+    CP --> CB[create-build-local]
+    CB --> CA[create-actions-local]
+    CA --> CH[check-local]
 ```
 
 ## 5. Дані, що передаються між етапами
@@ -49,13 +49,13 @@ flowchart LR
 
 ## 6. Обробка помилок оркестратором
 
-Оркестратор зупиняється на першій помилці, показує її причину та пропонує конкретну рекомендацію. Помилки не приховуються, а повідомлення про успіх не видається без успішного завершення `/check`.
+Оркестратор зупиняється на першій помилці, показує її причину та пропонує конкретну рекомендацію. Помилки не приховуються, а повідомлення про успіх не видається без успішного завершення `/check-local`.
 
 ## 7. Ідемпотентність
 
 Кожна команда перевіряє наявність цільового файлу або налаштування перед зміною. Існуючі файли не перезаписуються й не дублюються; про пропущені елементи повідомляється окремим списком.
 
-Повторний запуск `/init` виконує перевірку наявності кожного артефакту та повторно працює лише з відсутніми елементами.
+Повторний запуск `/init-local` виконує перевірку наявності кожного артефакту та повторно працює лише з відсутніми елементами.
 
 ## 8. Відповідність файлів Copilot ролям
 

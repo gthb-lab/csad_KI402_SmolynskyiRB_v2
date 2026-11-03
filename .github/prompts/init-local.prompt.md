@@ -7,11 +7,11 @@ agent: build-engineer
 
 Це оркестратор. Він послідовно виконує commands за їхніми файлами:
 
-1. `.github/prompts/git-init.prompt.md`
-2. `.github/prompts/create-project.prompt.md`
-3. `.github/prompts/create-build.prompt.md`
-4. `.github/prompts/create-actions.prompt.md`
-5. `.github/prompts/check.prompt.md`
+1. `.github/prompts/git-init-local.prompt.md`
+2. `.github/prompts/create-project-local.prompt.md`
+3. `.github/prompts/create-build-local.prompt.md`
+4. `.github/prompts/create-actions-local.prompt.md`
+5. `.github/prompts/check-local.prompt.md`
 
 ## Передумови
 
@@ -22,16 +22,16 @@ agent: build-engineer
 ## Порядок виконання
 
 1. Перед кожним кроком оголосити `Крок N/5: <назва>`, де назва відповідає відповідному command.
-2. Виконати `.github/prompts/git-init.prompt.md`.
+2. Виконати `.github/prompts/git-init-local.prompt.md`.
 3. Передати результат першого кроку наступному: назву проєкту `hello`, список створених файлів та список пропущених як уже існували.
-4. Виконати `.github/prompts/create-project.prompt.md` із параметрами `language=Python`, `project_name=hello`.
-5. Передати наступному кроку результат create-project: список створених і пропущених файлів.
-6. Виконати `.github/prompts/create-build.prompt.md`.
+4. Виконати `.github/prompts/create-project-local.prompt.md` із параметрами `language=Python`, `project_name=hello`.
+5. Передати наступному кроку результат create-project-local: список створених і пропущених файлів.
+6. Виконати `.github/prompts/create-build-local.prompt.md`.
 7. Передати наступному кроку список створених і пропущених файлів, а також дані про перевірку збірки.
-8. Виконати `.github/prompts/create-actions.prompt.md`.
+8. Виконати `.github/prompts/create-actions-local.prompt.md`.
 9. Передати результат перевірки workflow до фінального кроку.
-10. Виконати `.github/prompts/check.prompt.md`.
-11. Не вважати роботу успішною без успішного `check`.
+10. Виконати `.github/prompts/check-local.prompt.md`.
+11. Не вважати роботу успішною без успішного `check-local`.
 
 ## Обробка помилок
 
@@ -40,7 +40,7 @@ agent: build-engineer
 - Вивести причину помилки, повний доступний вивід команди та конкретну рекомендацію.
 - Не продовжувати наступні кроки.
 - Не приховувати помилку і не виправляти її тихо.
-- Не вважати роботу успішною без успішного `check`.
+- Не вважати роботу успішною без успішного `check-local`.
 
 Оркестратор сам ніколи не робить `commit`, `push`, `reset`, `force-push` і не видаляє файли.
 
@@ -50,13 +50,13 @@ agent: build-engineer
 
 | Крок | Статус | Створено | Пропущено (вже існує) |
 |---|---|---|---|
-| git-init | ... | ... | ... |
-| create-project | ... | ... | ... |
-| create-build | ... | ... | ... |
-| create-actions | ... | ... | ... |
-| check | ... | ... | ... |
+| git-init-local | ... | ... | ... |
+| create-project-local | ... | ... | ... |
+| create-build-local | ... | ... | ... |
+| create-actions-local | ... | ... | ... |
+| check-local | ... | ... | ... |
 
-Після таблиці вивести результат check: `CHECK PASSED` або `CHECK FAILED`.
+Після таблиці вивести результат check-local: `CHECK PASSED` або `CHECK FAILED`.
 
 Також перелічити команди, які користувач має виконати вручну:
 
@@ -66,4 +66,4 @@ agent: build-engineer
 
 ## Ідемпотентність
 
-Повторний запуск init має давати ті самі очікувані результати: існуючі відповідні файли пропускаються й повідомляються, відсутні файли створюються лише за потреби, а відповідні наявні файли не змінюються. Повторний цикл не має змінювати контент файлів, що вже відповідають вимогам.
+Повторний запуск init-local має давати ті самі очікувані результати: існуючі відповідні файли пропускаються й повідомляються, відсутні файли створюються лише за потреби, а відповідні наявні файли не змінюються. Повторний цикл не має змінювати контент файлів, що вже відповідають вимогам.

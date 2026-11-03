@@ -12,7 +12,7 @@ tools:
 
 ## Область відповідальності
 
-Що входить: git-init, створення структури проєкту, система збірки і тести, скрипти ci.sh/ci.bat, workflow .github/workflows/ci.yml, перевірка результату.
+Що входить: git-init-local, створення структури проєкту, система збірки і тести, скрипти ci.sh/ci.bat, workflow .github/workflows/ci.yml, перевірка результату.
 
 Що НЕ входить: публікація пакетів, деплой, налаштування захисту гілок, робота з секретами.
 
@@ -36,12 +36,12 @@ tools:
 
 ## Доступні commands
 
-- `git-init` — перевіряє й ініціалізує Git-репозиторій.
-- `create-project` — викликає skill project-scaffold для створення структури проєкту.
-- `create-build` — викликає skill build-and-test для налаштування збірки й тестів.
-- `create-actions` — викликає skill github-actions для створення workflow.
-- `check` — перевіряє створені файли, збірку, тести та конфігурацію CI.
-- `init` — оркестратор: послідовно викликає git-init, create-project, create-build, create-actions та check. Оркестратор `init` може конфліктувати із вбудованим у VS Code `/init`.
+- `git-init-local` — перевіряє й ініціалізує Git-репозиторій.
+- `create-project-local` — викликає skill project-scaffold для створення структури проєкту.
+- `create-build-local` — викликає skill build-and-test для налаштування збірки й тестів.
+- `create-actions-local` — викликає skill github-actions для створення workflow.
+- `check-local` — перевіряє створені файли, збірку, тести та конфігурацію CI.
+- `init-local` — оркестратор: послідовно викликає git-init-local, create-project-local, create-build-local, create-actions-local та check-local.
 
 ## Порядок роботи
 
@@ -60,8 +60,8 @@ tools:
 - Тест test_basic_addition проходить.
 - ci.yml містить matrix ubuntu-latest, windows-latest, macos-latest, запускає лише ci.sh / ci.bat і тригериться на push та pull_request до develop і master.
 - У git ls-files немає build/, .venv/, секретів.
-- Команда check завершується без FAIL.
-- Повторний запуск init не змінює вже створені файли.
+- Команда check-local завершується без FAIL.
+- Повторний запуск init-local не змінює вже створені файли.
 
 ## Звіт після виконання
 

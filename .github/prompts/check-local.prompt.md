@@ -5,7 +5,7 @@ agent: build-engineer
 
 ## Призначення
 
-Виконує повну перевірку агента та проєкту без виправлення виявлених проблем. Команда `check` лише читає файли й запускає перевірки; вона не змінює відстежувані файли проєкту.
+Виконує повну перевірку агента та проєкту без виправлення виявлених проблем. Команда `check-local` лише читає файли й запускає перевірки; вона не змінює відстежувані файли проєкту.
 
 ## Передумови
 
@@ -38,8 +38,8 @@ agent: build-engineer
 
 1. **Manifest:** перевірити існування `.github/agents/build-engineer.agent.md` і розділи `Роль`, `Заборонені дії`, `Критерії успішного завершення`.
 2. **Skills:** перевірити `.github/skills/project-scaffold/SKILL.md`, `.github/skills/build-and-test/SKILL.md`, `.github/skills/github-actions/SKILL.md`; кожен має містити призначення, вхідні дані, вихідні файли, перевірки й сценарій помилки.
-3. **Commands:** перевірити `.github/prompts/git-init.prompt.md`, `create-project.prompt.md`, `create-build.prompt.md`, `create-actions.prompt.md`, `check.prompt.md`, `init.prompt.md`; кожен має містити `Повідомлення про помилку`.
-4. **Оркестратор init:** перевірити, що `init.prompt.md` викликає команди саме в порядку `git-init → create-project → create-build → create-actions → check`.
+3. **Commands:** перевірити `.github/prompts/git-init-local.prompt.md`, `.github/prompts/create-project-local.prompt.md`, `.github/prompts/create-build-local.prompt.md`, `.github/prompts/create-actions-local.prompt.md`, `.github/prompts/check-local.prompt.md`, `.github/prompts/init-local.prompt.md`; кожен має містити `Повідомлення про помилку`.
+4. **Оркестратор init-local:** перевірити, що `init-local.prompt.md` викликає команди саме в порядку `git-init-local → create-project-local → create-build-local → create-actions-local → check-local`.
 5. **Структура проєкту:** перевірити наявність `src/hello/main.py`, `tests/test_basic.py`, `requirements.txt`, `requirements-dev.txt`, `pytest.ini`, `scripts/build.sh`, `scripts/build.bat`, `scripts/run.sh`, `scripts/run.bat`, `ci.sh`, `ci.bat`, `.gitignore`, `README.md`, `docs/architecture.md`, `docs/usage.md`.
 6. **Збірка й тести:** виконати `bash ci.sh` на Linux/macOS або `ci.bat` на Windows; очікується код виходу `0`, повідомлення `test_basic_addition passed` та наявність `build/hello` або `build/hello.exe`.
 7. **GitHub Actions:** у `.venv` завантажити YAML через `python -c "import yaml; yaml.safe_load(open('.github/workflows/ci.yml', encoding='utf-8'))"`; перевірити матрицю `ubuntu-latest`, `windows-latest`, `macos-latest`, тригери `push` і `pull_request` для `develop` і `master` та відсутність `pytest`, `pyinstaller`, `pip install`.
@@ -68,7 +68,7 @@ CHECK PASSED
 
 | Ситуація | Текст повідомлення | Що робити |
 |---|---|---|
-| Змінився git status | `FAIL: команда check змінила стан відстежуваних файлів.` | Порівняти стан до й після перевірки, знайти причину побічного ефекту й усунути автоматичну зміну файлів. |
+| Змінився git status | `FAIL: команда check-local змінила стан відстежуваних файлів.` | Порівняти стан до й після перевірки, знайти причину побічного ефекту й усунути автоматичну зміну файлів. |
 | Відсутній обов'язковий файл | `FAIL: очікуваний файл або каталог відсутній.` | Створити або відновити відповідний артефакт через передбачену command/skill. |
 | Збірка або тест падає | `FAIL: збірка чи тестування завершилося ненульовим кодом.` | Показати повний вивід, не приховувати помилку і не виправляти проєкт автоматично. |
 | YAML невалідний | `FAIL: workflow .github/workflows/ci.yml не є валідним YAML.` | Показати помилку парсера, перевірити відступи й структуру workflow. |
@@ -76,4 +76,4 @@ CHECK PASSED
 
 ## Ідемпотентність
 
-Повторний запуск `check` має давати той самий список перевірок та не змінювати відстежувані файли. Побічні зміни дозволені лише в `.venv/`, `build/` і `.pytest_cache/`, а результат порівняння `git status --short` до й після перевірки має бути однаковим.
+Повторний запуск `check-local` має давати той самий список перевірок та не змінювати відстежувані файли. Побічні зміни дозволені лише в `.venv/`, `build/` і `.pytest_cache/`, а результат порівняння `git status --short` до й після перевірки має бути однаковим.
